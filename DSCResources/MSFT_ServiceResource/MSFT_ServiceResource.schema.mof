@@ -1,0 +1,15 @@
+
+[ClassVersion("1.0.0"),FriendlyName("Service")] 
+class MSFT_ServiceResource : OMI_BaseResource
+{
+  [key] string Name;
+  [write,ValueMap{"Running", "Stopped"},Values{"Running", "Stopped"}] string State;
+  [write,ValueMap{"Automatic", "Manual", "Disabled"},Values{"Automatic", "Manual", "Disabled"}] string StartupType;
+  [write,ValueMap{"LocalSystem", "LocalService", "NetworkService"},Values{"LocalSystem", "LocalService", "NetworkService"}] string BuiltInAccount;
+  [write,EmbeddedInstance("MSFT_Credential")] string Credential;
+  [read] string Status;
+  [read] string DisplayName;
+  [read] string Description;
+  [read] string Path;
+  [read] string Dependencies[];
+};
